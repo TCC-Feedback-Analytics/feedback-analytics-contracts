@@ -1,13 +1,31 @@
 {
   "name": "@feedback/lib-shared",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
-  "dependencies": {
+  "exports": {
+    "./interfaces/*": {
+      "types": "./dist/interfaces/*.d.ts",
+      "default": "./dist/interfaces/*.js"
+    },
+    "./schemas/*": {
+      "types": "./dist/schemas/*.d.ts",
+      "default": "./dist/schemas/*.js"
+    }
+  },
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "prepare": "npm run build",
+    "test": "vitest run --passWithNoTests"
+  },
+  "peerDependencies": {
     "zod": "^4.0.13"
   },
   "devDependencies": {
     "@types/express": "^5.0.3",
-    "vitest": "^3.2.4"
+    "typescript": "^5.8.3",
+    "vitest": "^3.2.4",
+    "zod": "^4.0.13"
   }
 }

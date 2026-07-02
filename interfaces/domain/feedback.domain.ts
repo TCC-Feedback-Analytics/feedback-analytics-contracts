@@ -1,4 +1,4 @@
-import type { IaAnalyzeScopeType } from 'lib/interfaces/contracts/ia-analyze/scope.contract';
+import type { IaAnalyzeScopeType } from '../contracts/ia-analyze/scope.contract.js';
 
 /**
  * Cliente identificado no dispositivo associado ao feedback.

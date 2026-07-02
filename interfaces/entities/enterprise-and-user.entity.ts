@@ -1,5 +1,5 @@
-import type { EnterpriseContext } from './enterprise.entity.ts';
-import type { AuthUser } from './auth-user.entity.ts';
+import type { EnterpriseContext } from './enterprise.entity.js';
+import type { AuthUser } from './auth-user.entity.js';
 
 /**
  * Agregado com dados da empresa (enriquecidos com campos de auth.users) e do usuário autenticado.
