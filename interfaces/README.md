@@ -1,6 +1,6 @@
 # Padrão de Interfaces
 
-Este diretório contém apenas contratos de tipagem compartilhados no projeto.
+Parte do pacote [`@feedback/lib-shared`](../README.md). Este diretório (`interfaces/`) contém apenas **contratos de tipagem** (só compilação); os **schemas de validação Zod** (runtime) ficam em `schemas/`.
 
 ## Estrutura
 
@@ -25,4 +25,4 @@ Este diretório contém apenas contratos de tipagem compartilhados no projeto.
 ## Regra de uso
 
 - Tipos de apresentação (props de componente/página) **não** ficam aqui.
-- Tipos de apresentação devem ficar próximos do uso, em arquivos `ui.types.ts` dentro de `components/` ou `pages/`.
+- Tipos de apresentação devem ficar próximos do uso — em arquivos `ui.types.ts` nos repositórios que consomem (ex.: `components/`/`pages/` do web), **não** neste pacote.
