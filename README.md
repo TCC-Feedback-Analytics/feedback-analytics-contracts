@@ -14,6 +14,8 @@ Pacote de **contratos compartilhados** do [Feedback Analytics](https://github.co
   - `public/` — `login`, `register`, `forgotPassword`, `feedback`
   - `user/` — `emailUpdate`, `enterpriseUpdate`, `metadadosUpdate`, `name`, `phone`, `resetPassword`
 
+> **Autenticação:** o provedor de auth do sistema é o **Better Auth** (a sessão é gerenciada pelo api-gateway via cookie httpOnly). Isso é detalhe do gateway — os **contratos aqui não mudam**: os schemas de auth (`login`, `register`, `forgotPassword`, `resetPassword`, etc.) continuam com o **mesmo shape**.
+
 Convenção de nomes e regras de uso: [`interfaces/README.md`](interfaces/README.md).
 
 ## Build
