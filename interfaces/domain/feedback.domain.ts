@@ -140,7 +140,7 @@ export interface FeedbackStats {
   sentimentBreakdown: SentimentBreakdown;
   /** Feedbacks (no escopo) que já têm análise da IA. */
   totalAnalyzed?: number;
-  /** Feedbacks (no escopo) ainda não analisados (totalFeedbacks - totalAnalyzed). */
+  /** Feedbacks com comentário (no escopo) ainda não analisados pela IA. */
   pendingCount?: number;
   /** Timestamp (ISO) da análise mais recente no escopo; null se nenhuma. */
   latestAnalysisAt?: string | null;
@@ -163,6 +163,31 @@ export interface FeedbackStats {
     netSentimentScore: number;
     confidenceTier: ConfidenceTier;
   };
+  /** Quem escreve comentário (o comentário é opcional no formulário). */
+  commentParticipation?: CommentParticipation;
+}
+
+/** Estrelas de um grupo de avaliações (quem comentou ou quem não comentou). */
+export interface CommentGroupRating {
+  n: number;
+  mean: number;
+  ci: Interval;
+}
+
+/**
+ * Participação nos comentários: quantos escreveram algo e se a nota de quem
+ * comenta difere da de quem só dá as estrelas. Diz o quanto o tom dos
+ * comentários representa o escopo.
+ */
+export interface CommentParticipation {
+  total: number;
+  withComment: number;
+  /** % das avaliações com comentário, com IC de Wilson (em %). */
+  pct: number;
+  ci: Interval;
+  confidenceTier: ConfidenceTier;
+  withCommentRating: CommentGroupRating | null;
+  withoutCommentRating: CommentGroupRating | null;
 }
 
 /**
