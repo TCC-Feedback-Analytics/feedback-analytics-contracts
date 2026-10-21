@@ -1,8 +1,9 @@
 import z from 'zod';
+import { MIN_PASSWORD_LENGTH, PASSWORD_TOO_SHORT_MESSAGE } from '../public/passwordPolicy.js';
 
 export const resetPasswordSchema = z
   .object({
-    password: z.string().min(6, 'A senha deve ter no mínimo 6 caracteres'),
+    password: z.string().min(MIN_PASSWORD_LENGTH, PASSWORD_TOO_SHORT_MESSAGE),
     confirmPassword: z.string(),
   })
   .refine((data) => data.password === data.confirmPassword, {
