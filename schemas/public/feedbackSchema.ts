@@ -4,7 +4,8 @@ import z from 'zod';
 export const feedbackBaseSchema = z.object({
   enterprise_id: z.uuidv4(),
   rating: z.number().int().min(1).max(5),
-  message: z.string().min(3).max(5000),
+  // Comentário opcional: o cliente pode só dar as estrelas e responder às perguntas.
+  message: z.string().trim().max(5000).default(''),
   // Contagem variável: cada escopo (empresa/produto/serviço/departamento) pode
   // ter de 0 a 3 perguntas ativas configuradas. O controller valida que as
   // respostas batem exatamente com as perguntas ativas do contexto.
