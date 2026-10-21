@@ -4,8 +4,6 @@
  */
 export interface Enterprise {
   id: string;
-  document: string;
-  account_type?: 'CPF' | 'CNPJ';
   terms_version?: string;
   terms_accepted_at?: string | null;
   created_at: string;

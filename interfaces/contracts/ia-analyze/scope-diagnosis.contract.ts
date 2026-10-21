@@ -129,6 +129,18 @@ export interface ScopeDiagnosisMetrics {
   /** Só as células com avaliações. */
   peak_times: ScopeDiagnosisPeakCell[];
   customers: ScopeDiagnosisCustomers | null;
+  /** Quem escreve comentário; `null` sem avaliações. */
+  comment_participation: ScopeDiagnosisCommentParticipation | null;
+}
+
+/**
+ * O comentário é opcional: a taxa diz o quanto o tom dos comentários representa
+ * o escopo, e as médias dizem se quem comenta está mais ou menos satisfeito.
+ */
+export interface ScopeDiagnosisCommentParticipation {
+  pct: number;
+  with_comment_mean: number | null;
+  without_comment_mean: number | null;
 }
 
 export type ScopeDiagnosisSampleReason =
