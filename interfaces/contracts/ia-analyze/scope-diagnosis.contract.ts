@@ -1,5 +1,6 @@
 import type { IaAnalyzeEnterpriseContext } from './input.contract';
 import type { IaAnalyzeScopeType, IaAnalyzeSentiment } from './scope.contract';
+import type { CommentFieldAdvice, CommentFieldHidden } from '../../../schemas/public/commentField';
 
 /**
  * Contratos do diagnóstico do escopo: a IA lê os números do escopo num período
@@ -141,6 +142,19 @@ export interface ScopeDiagnosisCommentParticipation {
   pct: number;
   with_comment_mean: number | null;
   without_comment_mean: number | null;
+  /** % dos comentários com menos de 20 caracteres; `null` sem comentários. */
+  short_pct?: number | null;
+}
+
+/**
+ * O campo de comentário no formulário do escopo: oculto (em todos ou em parte
+ * dos itens), a pergunta própria que os clientes responderam e, se for o caso,
+ * a sugestão de mudar o campo (poucos comentam ou os comentários dizem pouco).
+ */
+export interface ScopeDiagnosisCommentField {
+  hidden: CommentFieldHidden;
+  prompt: string | null;
+  advice: CommentFieldAdvice | null;
 }
 
 export type ScopeDiagnosisSampleReason =
@@ -170,6 +184,8 @@ export interface ScopeDiagnosisRemoteRequest {
   /** `null` sem período anterior ou sem avaliações nele. */
   previous: ScopeDiagnosisMetrics | null;
   comment_samples: ScopeDiagnosisCommentSample[];
+  /** Ausente em pedidos antigos: vale como campo visível, com o convite padrão. */
+  comment_field?: ScopeDiagnosisCommentField;
 }
 
 /** Um ponto do diagnóstico, sempre com o número que o sustenta. */

@@ -1,4 +1,5 @@
 import type { FeedbackQuestionPublic } from './qrcode/question.contract';
+import type { CommentFieldSettings } from '../../schemas/public/commentField';
 
 /**
  * Resposta mínima de empresa usada na validação de QR Code.
@@ -12,6 +13,8 @@ export interface EnterpriseContractResponse {
   item_name?: string | null;
   item_kind?: 'PRODUCT' | 'SERVICE' | 'DEPARTMENT' | null;
   questions?: FeedbackQuestionPublic[];
+  /** Campo de comentário do escopo; ausente em gateways antigos (= convite padrão). */
+  comment?: CommentFieldSettings;
 }
 
 /**
