@@ -1,4 +1,5 @@
 import type { IaAnalyzeScopeType } from '../contracts/ia-analyze/scope.contract.js';
+import type { ScopeCommentField } from '../../schemas/public/commentField.js';
 
 /**
  * Cliente identificado no dispositivo associado ao feedback.
@@ -165,6 +166,8 @@ export interface FeedbackStats {
   };
   /** Quem escreve comentário (o comentário é opcional no formulário). */
   commentParticipation?: CommentParticipation;
+  /** Como está o campo de comentário nos pontos de coleta do recorte. */
+  commentField?: ScopeCommentField;
 }
 
 /** Estrelas de um grupo de avaliações (quem comentou ou quem não comentou). */
@@ -188,6 +191,8 @@ export interface CommentParticipation {
   confidenceTier: ConfidenceTier;
   withCommentRating: CommentGroupRating | null;
   withoutCommentRating: CommentGroupRating | null;
+  /** Comentários curtos (menos de 20 caracteres), que quase não dizem nada. */
+  shortComments?: number;
 }
 
 /**
