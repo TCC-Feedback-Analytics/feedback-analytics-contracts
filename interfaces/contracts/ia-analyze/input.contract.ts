@@ -29,6 +29,11 @@ export interface IaAnalyzeDynamicSubanswer {
 export interface IaAnalyzeFeedbackInput {
   id: string;
   message: string;
+  /**
+   * A pergunta própria que o cliente viu no campo de comentário (guardada no envio);
+   * ausente com o convite padrão. O `message` é a resposta a ela.
+   */
+  comment_prompt?: string | null;
   rating: number | null;
   created_at: string | null;
   scope_type: IaAnalyzeScopeType;
