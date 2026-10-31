@@ -41,13 +41,20 @@ export const feedbackBaseSchema = z.object({
   customer_country: z.string().max(80).optional(),
 });
 
-// Schema específico para QR Code
-export const qrcodeFeedbackSchema = feedbackBaseSchema.extend({
-  channel: z.literal('QRCODE'),
+// Schema do feedback público enviado pelos canais de coleta (QR Code, Link direto, NFC, Teste)
+export const publicFeedbackSchema = feedbackBaseSchema.extend({
+  // Canal de coleta (QR, LINK, NFC, TEST). Texto livre de propósito: a marca vem da
+  // URL e o gateway normaliza (normalizeFeedbackChannel); valor estranho não recusa a resposta.
+  channel: z.string().trim().max(16).optional(),
   collection_point_id: z.uuidv4().optional(),
   catalog_item_id: z.uuidv4().optional(),
 });
 
+/** @deprecated Use publicFeedbackSchema */
+export const qrcodeFeedbackSchema = publicFeedbackSchema;
+
 // Types exportados
 export type FeedbackBasePayload = z.infer<typeof feedbackBaseSchema>;
-export type QrcodeFeedbackPayload = z.infer<typeof qrcodeFeedbackSchema>;
+export type PublicFeedbackPayload = z.infer<typeof publicFeedbackSchema>;
+/** @deprecated Use PublicFeedbackPayload */
+export type QrcodeFeedbackPayload = PublicFeedbackPayload;
