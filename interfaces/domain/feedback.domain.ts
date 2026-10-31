@@ -1,6 +1,6 @@
 import type { IaAnalyzeScopeType } from '../contracts/ia-analyze/scope.contract.js';
 import type { ScopeCommentField } from '../../schemas/public/commentField.js';
-import type { ChannelRatingSummary } from '../../schemas/public/feedbackChannel.js';
+import type { ChannelRatingSummary, FeedbackChannel } from '../../schemas/public/feedbackChannel.js';
 
 /**
  * Cliente identificado no dispositivo associado ao feedback.
@@ -65,6 +65,8 @@ export interface Feedback {
   id: string;
   message: string;
   rating: number;
+  /** Canal de coleta (etapa 06). `TEST` = o "Testar o formulário" do dono, fora das métricas; `null` = sem marca. */
+  channel?: FeedbackChannel | null;
   created_at: string;
   updated_at: string;
   collection_points: CollectionPoint;
