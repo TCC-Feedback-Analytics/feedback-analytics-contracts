@@ -1,6 +1,7 @@
 import type { IaAnalyzeEnterpriseContext } from './input.contract';
 import type { IaAnalyzeScopeType, IaAnalyzeSentiment } from './scope.contract';
 import type { CommentFieldAdvice, CommentFieldHidden } from '../../../schemas/public/commentField';
+import type { CollectionChannel } from '../../../schemas/public/feedbackChannel';
 
 /**
  * Contratos do diagnóstico do escopo: a IA lê os números do escopo num período
@@ -132,6 +133,15 @@ export interface ScopeDiagnosisMetrics {
   customers: ScopeDiagnosisCustomers | null;
   /** Quem escreve comentário; `null` sem avaliações. */
   comment_participation: ScopeDiagnosisCommentParticipation | null;
+  /** Por onde chegaram as avaliações; ausente em pedidos de gateways antigos. */
+  channels?: ScopeDiagnosisChannel[];
+}
+
+/** Um canal de coleta no período: `channel: null` = avaliações sem a marca de canal. */
+export interface ScopeDiagnosisChannel {
+  channel: CollectionChannel | null;
+  count: number;
+  mean: number | null;
 }
 
 /**

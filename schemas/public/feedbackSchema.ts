@@ -43,7 +43,9 @@ export const feedbackBaseSchema = z.object({
 
 // Schema específico para QR Code
 export const qrcodeFeedbackSchema = feedbackBaseSchema.extend({
-  channel: z.literal('QRCODE'),
+  // Canal de coleta (QR, LINK, NFC, TEST). Texto livre de propósito: a marca vem da
+  // URL e o gateway normaliza (normalizeFeedbackChannel); valor estranho não recusa a resposta.
+  channel: z.string().trim().max(16).optional(),
   collection_point_id: z.uuidv4().optional(),
   catalog_item_id: z.uuidv4().optional(),
 });
