@@ -1,5 +1,6 @@
 import type { IaAnalyzeScopeType } from '../contracts/ia-analyze/scope.contract.js';
 import type { ScopeCommentField } from '../../schemas/public/commentField.js';
+import type { ChannelRatingSummary } from '../../schemas/public/feedbackChannel.js';
 
 /**
  * Cliente identificado no dispositivo associado ao feedback.
@@ -168,6 +169,8 @@ export interface FeedbackStats {
   commentParticipation?: CommentParticipation;
   /** Como está o campo de comentário nos pontos de coleta do recorte. */
   commentField?: ScopeCommentField;
+  /** Por onde chegaram as avaliações (QR, link, NFC e não identificadas), sem o teste do dono. */
+  channelBreakdown?: ChannelRatingSummary[];
 }
 
 /** Estrelas de um grupo de avaliações (quem comentou ou quem não comentou). */
