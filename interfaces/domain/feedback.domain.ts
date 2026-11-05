@@ -14,17 +14,15 @@ export interface Customer {
 }
 
 /**
- * Dispositivo rastreado utilizado para envio de feedback.
+ * Dispositivo rastreado utilizado para envio de feedback, como o dono da empresa
+ * o vê na lista. IP, navegador e fingerprint ficam só no gateway (LGPD,
+ * minimização): o dono não precisa deles.
  * Usado em: lib/interfaces/domain/feedback.domain.ts (composição de Feedback).
  */
 export interface TrackedDevice {
   id: string;
-  device_fingerprint: string | null;
-  user_agent: string | null;
-  ip_address: string | null;
   feedback_count: number | null;
   is_blocked: boolean | null;
-  customer_id: string | null;
   customer: Customer | null;
 }
 
@@ -67,6 +65,8 @@ export interface Feedback {
   rating: number;
   /** Canal de coleta (etapa 06). `TEST` = o "Testar o formulário" do dono, fora das métricas; `null` = sem marca. */
   channel?: FeedbackChannel | null;
+  /** Pergunta própria que o cliente viu acima do comentário; `null` quando o campo era o padrão. */
+  comment_prompt?: string | null;
   created_at: string;
   updated_at: string;
   collection_points: CollectionPoint;
