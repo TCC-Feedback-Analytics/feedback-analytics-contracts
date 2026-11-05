@@ -220,7 +220,10 @@ export interface ScopeDiagnosisResult {
   concerns: ScopeDiagnosisFinding[];
   /** O que mudou em relação ao período anterior; vazio sem comparação. */
   changes: ScopeDiagnosisFinding[];
-  /** De 3 a 5, em ordem de prioridade. */
+  /**
+   * De 1 a 5, em ordem de prioridade. O prompt pede de 3 a 5; a validação aceita
+   * menos para não descartar o diagnóstico inteiro por isso.
+   */
   recommendations: ScopeDiagnosisRecommendation[];
   /** Onde os dados não bastam para concluir (precisão baixa, poucos comentários). */
   limitations: string[];
