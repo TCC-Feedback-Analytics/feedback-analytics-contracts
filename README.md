@@ -74,5 +74,6 @@ O pacote não tem testes próprios (o `npm test` passa sem nenhum teste) nem CI.
 | `v1.7.0` | 31/10/2026 | Canal de coleta: QR Code, link ou NFC (`channels`) |
 | `v1.8.0` | 31/10/2026 | Canal na lista de feedbacks |
 | `v1.9.0` | 05/11/2026 | Lista de feedbacks sem IP, navegador e fingerprint do aparelho (LGPD) |
+| `v1.10.0` | 16/11/2026 | Síntese de insights do IA Analyze (`insights-synthesis`), antes copiada no Gateway e no IA Analyze |
 
 > Contexto da separação (monorepo → multi-repo) e demais decisões vivem no [repositório central de documentação](https://github.com/TCC-Feedback-Analytics/feedback-analytics).
