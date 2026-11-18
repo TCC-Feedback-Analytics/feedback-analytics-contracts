@@ -34,18 +34,18 @@ O script `prepare` roda o build automaticamente na instalação — então consu
 Distribuído **por tag git** (não no registry do npm — `private: true`). Cada serviço declara a dependência apontando para uma tag:
 
 ```json
-"@feedback/lib-shared": "github:TCC-Feedback-Analytics/feedback-analytics-contracts#v1.9.0"
+"@feedback/lib-shared": "github:TCC-Feedback-Analytics/feedback-analytics-contracts#v1.10.0"
 ```
 
-Em 16/11/2026, cada serviço fixa uma tag, igual na `developer` e na `main`:
+Em 18/11/2026, cada serviço fixa uma tag, igual na `developer` e na `main`:
 
 | Serviço | Tag |
 |---|---|
 | Web | `v1.9.0` |
-| API Gateway | `v1.8.0` |
-| IA Analyze | `v1.7.0` |
+| API Gateway | `v1.10.0` |
+| IA Analyze | `v1.10.0` |
 
-As tags diferentes não quebram a integração: entre a `v1.7.0` e a `v1.9.0`, os contratos de `ia-analyze` que o Gateway e o IA Analyze trocam são os mesmos.
+A Web ficar na `v1.9.0` não quebra nada: a `v1.10.0` só acrescentou o contrato `insights-synthesis`, que a Web não usa.
 
 Os imports usam o `exports` map do `package.json` (`./interfaces/*` e `./schemas/*`):
 
